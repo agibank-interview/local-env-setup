@@ -7,38 +7,6 @@ Este projeto centraliza a infraestrutura local necessária para executar os micr
 *   Docker
 *   Docker Compose
 
-## 🛠️ Como Executar
-
-O projeto inclui um script utilitário `local-env-setup.sh` para facilitar o gerenciamento do ambiente.
-
-1.  **Dê permissão de execução ao script:**
-    ```bash
-    chmod +x local-env-setup.sh
-    ```
-
-2.  **Inicie o ambiente:**
-    ```bash
-    ./local-env-setup.sh up
-    ```
-    Isso irá construir as imagens e iniciar os containers em segundo plano.
-
-    > ⚠️ **Atenção:** A primeira execução pode levar aproximadamente 4 minutos devido ao download das imagens Docker e builds do Gradle. Este tempo pode variar dependendo da sua conexão com a internet e desempenho da máquina.
-
-3.  **Verifique o status:**
-    ```bash
-    ./local-env-setup.sh status
-    ```
-
-4.  **Pare o ambiente:**
-    ```bash
-    ./local-env-setup.sh stop
-    ```
-
-5.  **Remova o ambiente (containers e volumes):**
-    ```bash
-    ./local-env-setup.sh down
-    ```
-
 ## 📦 Serviços e Portas
 
 | Serviço | Porta Externa | Descrição |
@@ -83,23 +51,40 @@ git clone git@github.com:agibank-interview/insurance.git
 
 GitHub CLI:
 ```bash
-gh repo clone agibank-interview/insurance
+gh repo clone agibank-interview/insurance.git
 ```
 
-## 🔐 Credenciais (Desenvolvimento)
+## 🛠️ Como Executar
 
-As credenciais são configuradas via variáveis de ambiente no arquivo `.env`.
+O projeto inclui um script utilitário `local-env-setup.sh` para facilitar o gerenciamento do ambiente.
 
-*   **Postgres Admin**: `admin` / `admin_pass`
-*   **Mongo Admin**: `admin` / `admin_pass`
+1.  **Dê permissão de execução ao script:**
+    ```bash
+    chmod +x local-env-setup.sh
+    ```
 
-### Bancos de Dados Criados
+2.  **Inicie o ambiente:**
+    ```bash
+    ./local-env-setup.sh up
+    ```
+    Isso irá construir as imagens e iniciar os containers em segundo plano.
 
-*   **Postgres**:
-    *   `customers` (User: `customers_db_user`)
-    *   `insurance` (User: `insurance_db_user`)
-*   **Mongo**:
-    *   `insurance` (User: `insurance_db_user`)
+    > ⚠️ **Atenção:** A primeira execução pode levar aproximadamente 4 minutos devido ao download das imagens Docker e builds do Gradle. Este tempo pode variar dependendo da sua conexão com a internet e desempenho da máquina.
+
+3.  **Verifique o status:**
+    ```bash
+    ./local-env-setup.sh status
+    ```
+
+4.  **Pare o ambiente:**
+    ```bash
+    ./local-env-setup.sh stop
+    ```
+
+5.  **Remova o ambiente (containers e volumes):**
+    ```bash
+    ./local-env-setup.sh down
+    ```
 
 ## 📮 Postman Collections
 
@@ -120,8 +105,23 @@ Para auxiliar nos testes e validação dos serviços, este projeto contém cole�
 *   **Insurance Service:**
     *   `postman/insurance-service/insurance.postman_collection.json`
 
+## 🔐 Credenciais (Desenvolvimento)
+
+As credenciais são configuradas via variáveis de ambiente no arquivo `.env`.
+
+*   **Postgres Admin**: `admin` / `admin_pass`
+*   **Mongo Admin**: `admin` / `admin_pass`
+
+### Bancos de Dados Criados
+
+*   **Postgres**:
+    *   `customers` (User: `customers_db_user`)
+    *   `insurance` (User: `insurance_db_user`)
+*   **Mongo**:
+    *   `insurance` (User: `insurance_db_user`)
+
 ## 📝 Notas Técnicas
 
 *   O `docker-compose.yml` inclui `healthchecks` para garantir que as aplicações só iniciem após os bancos de dados estarem prontos.
 *   O script de inicialização em `postgres/` cria as credenciais e o banco. As tabelas e a carga de dados serão criados via scripts de migração pelo Flyway.
-*   O script de inicialização em `mongo/` cria as credenciais, o banco, a coleção e também popula a coleção com dados iniciais para teste.
+*   O script de inicialização em `mongo/` cria as credenciais, o banco e a coleção, e também popula a coleção com dados iniciais para teste.
