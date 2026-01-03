@@ -22,6 +22,7 @@ O projeto inclui um script utilitário `local-env-setup.sh` para facilitar o ger
     ```
     Isso irá construir as imagens e iniciar os containers em segundo plano.
 
+    > ⚠️ **Atenção:** A primeira execução pode levar aproximadamente 4 minutos devido ao download das imagens Docker e builds do Gradle. Este tempo pode variar dependendo da sua conexão com a internet e desempenho da máquina.
 
 3.  **Verifique o status:**
     ```bash
@@ -123,6 +124,4 @@ Para auxiliar nos testes e validação dos serviços, este projeto contém cole�
 
 *   O `docker-compose.yml` inclui `healthchecks` para garantir que as aplicações só iniciem após os bancos de dados estarem prontos.
 *   O script de inicialização em `postgres/` cria as credenciais e o banco. As tabelas e a carga de dados serão criados via scripts de migração pelo Flyway.
-*   O script de inicialização em `mongo/` cria as credenciais, o banco e a coleção, e também popula a coleção com dados iniciais para teste.
-
-
+*   O script de inicialização em `mongo/` cria as credenciais, o banco, a coleção e também popula a coleção com dados iniciais para teste.
