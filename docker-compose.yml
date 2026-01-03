@@ -1,0 +1,101 @@
+name: agibank-interview
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    environment:
+    - POSTGRES_USER=${POSTGRES_ADMIN_USER}
+    - POSTGRES_PASSWORD=${POSTGRES_ADMIN_PASS}
+
+    - CUSTOMERS_DB_NAME=${POSTGRES_CUSTOMERS_DB_NAME}
+    - CUSTOMERS_DB_USER=${POSTGRES_CUSTOMERS_DB_USER}
+    - CUSTOMERS_DB_PASS=${POSTGRES_CUSTOMERS_DB_PASS}
+
+    - INSURANCE_DB_NAME=${POSTGRES_INSURANCE_DB_NAME}
+    - INSURANCE_DB_USER=${POSTGRES_INSURANCE_DB_USER}
+    - INSURANCE_DB_PASS=${POSTGRES_INSURANCE_DB_PASS}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - agibank-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_ADMIN_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mongodb:
+    image: mongo:8.0.17
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ADMIN_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ADMIN_PASS}
+
+      - INSURANCE_DB_NAME=${MONGO_INSURANCE_DB_NAME}
+      - INSURANCE_DB_USER=${MONGO_INSURANCE_DB_USER}
+      - INSURANCE_DB_PASS=${MONGO_INSURANCE_DB_PASS}
+    volumes:
+      - ./mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - mongodb_data:/data/db
+    networks:
+      - agibank-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  customers-service:
+    build:
+      context: ../customers
+      dockerfile: Dockerfile
+    container_name: customers-service
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+      - POSTGRES_DB_URL=jdbc:postgresql://postgres:5432/${POSTGRES_CUSTOMERS_DB_NAME}?reWriteBatchedInserts=true
+      - POSTGRES_DB_USER=${POSTGRES_CUSTOMERS_DB_USER}
+      - POSTGRES_DB_PASS=${POSTGRES_CUSTOMERS_DB_PASS}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - agibank-network
+
+  insurance-service:
+    build:
+      context: ../insurance
+      dockerfile: Dockerfile
+    container_name: insurance-service
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+      - POSTGRES_DB_URL=jdbc:postgresql://postgres:5432/${POSTGRES_INSURANCE_DB_NAME}?reWriteBatchedInserts=true
+      - POSTGRES_DB_USER=${POSTGRES_INSURANCE_DB_USER}
+      - POSTGRES_DB_PASS=${POSTGRES_INSURANCE_DB_PASS}
+
+      - MONGO_DB_URL=mongodb://${MONGO_INSURANCE_DB_USER}:${MONGO_INSURANCE_DB_PASS}@mongodb:27017/${MONGO_INSURANCE_DB_NAME}?authSource=${MONGO_INSURANCE_DB_NAME}
+      - CUSTOMERS_SERVICE_URL=http://customers-service:8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    networks:
+      - agibank-network
+
+networks:
+  agibank-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  mongodb_data:
