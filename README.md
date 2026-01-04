@@ -123,5 +123,5 @@ As credenciais são configuradas via variáveis de ambiente no arquivo `.env`.
 ## 📝 Notas Técnicas
 
 *   O `docker-compose.yml` inclui `healthchecks` para garantir que as aplicações só iniciem após os bancos de dados estarem prontos.
-*   O script de inicialização em `postgres/` cria as credenciais e o banco. As tabelas e a carga de dados serão criadas via scripts de migração pelo Flyway.
-*   O script de inicialização em `mongo/` cria as credenciais, o banco e a coleção, e também popula a coleção com dados iniciais para teste.
+*   O script de inicialização em `postgres/` cria as credenciais e o banco. As tabelas e a carga de dados serão criadas via scripts de migração, pelo Flyway de cada projeto.
+*   O script de inicialização em `mongo/` cria as credenciais, banco, coleção e também popula a coleção com dados iniciais para testes.
