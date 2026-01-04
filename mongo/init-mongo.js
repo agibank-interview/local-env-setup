@@ -25,7 +25,7 @@ db.insuranceOffer.insertMany([
   {
     "_id": "550e8400-e29b-41d4-a716-446655440001",
     "insuranceCode": "AGI_LIFE_BRONZE_12M_50_60",
-    "description": "Oferta Especial Vida Bronze",
+    "description": "Oferta Especial Agi Vida Bronze",
     "offerPrice": 34.00,
     "discountPercentage": 15.0,
     "eligibleStates": ["SP", "RJ", "MG"],
@@ -36,7 +36,7 @@ db.insuranceOffer.insertMany([
   {
     "_id": "550e8400-e29b-41d4-a716-446655440002",
     "insuranceCode": "AGI_LIFE_SILVER_12M_60_70",
-    "description": "Oferta Especial Vida Prata",
+    "description": "Oferta Especial Agi Vida Prata",
     "offerPrice": 59.50,
     "discountPercentage": 15.0,
     "eligibleStates": ["RS", "SC", "PR"],
@@ -47,7 +47,7 @@ db.insuranceOffer.insertMany([
   {
     "_id": "550e8400-e29b-41d4-a716-446655440003",
     "insuranceCode": "AGI_LIFE_GOLD_12M_70_100",
-    "description": "Oferta Especial Vida Ouro",
+    "description": "Oferta Especial Agi Vida Ouro",
     "offerPrice": 106.25,
     "discountPercentage": 15.0,
     "eligibleStates": ["DF", "GO", "MS"],
