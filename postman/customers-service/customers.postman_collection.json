@@ -31,7 +31,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"Edson Cândido\",\n  \"email\": \"edd.candido@gmail.com\",\n  \"phone\": \"11984173650\",\n  \"birthDate\": \"1985-03-09\",\n  \"cpf\": \"12345678901\",\n  \"addresses\": [\n    {\n      \"street\": \"Estrada do Campo Limpo\",\n      \"number\": 5733,\n      \"complement\": \"Apto 42B Iguaçu\",\n      \"neighborhood\": \"Campo Limpo\",\n      \"city\": \"São Paulo\",\n      \"state\": \"SP\",\n      \"zipcode\": \"05787000\",\n      \"country\": \"Brasil\",\n      \"type\": \"RESIDENCIAL\"\n    },\n    {\n      \"street\": \"Av Copacabana\",\n      \"number\": 5000,\n      \"complement\": \"Bloco C, Apt 101\",\n      \"neighborhood\": \"Copacabana\",\n      \"city\": \"Rio de Janeiro\",\n      \"state\": \"RJ\",\n      \"zipcode\": \"22020001\",\n      \"country\": \"Brasil\",\n      \"type\": \"COMERCIAL\"\n    }\n  ]\n}",
+					"raw": "{\n  \"name\": \"Edson Cândido\",\n  \"email\": \"edd.candido@gmail.com\",\n  \"phone\": \"11984173650\",\n  \"birthDate\": \"1975-03-09\",\n  \"cpf\": \"12345678901\",\n  \"addresses\": [\n    {\n      \"street\": \"Estrada do Campo Limpo\",\n      \"number\": 5733,\n      \"complement\": \"Apto 42B Iguaçu\",\n      \"neighborhood\": \"Campo Limpo\",\n      \"city\": \"São Paulo\",\n      \"state\": \"SP\",\n      \"zipcode\": \"05787000\",\n      \"country\": \"Brasil\",\n      \"type\": \"RESIDENCIAL\"\n    },\n    {\n      \"street\": \"Av Copacabana\",\n      \"number\": 5000,\n      \"complement\": \"Bloco C, Apt 101\",\n      \"neighborhood\": \"Copacabana\",\n      \"city\": \"Rio de Janeiro\",\n      \"state\": \"RJ\",\n      \"zipcode\": \"22020001\",\n      \"country\": \"Brasil\",\n      \"type\": \"COMERCIAL\"\n    }\n  ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -151,7 +151,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Edson Cândido da Silva\",\n    \"birthDate\": \"1975-03-09\",\n    \"email\": \"edd.candido@icloud.com\"\n}",
+					"raw": "{\n    \"name\": \"Edson Cândido da Silva\",\n    \"email\": \"edd.candido@icloud.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
