@@ -1,74 +1,74 @@
 {
-	"info": {
-		"_postman_id": "09655bc9-08d9-4bf0-a9ff-1546b9b59c44",
-		"name": "insurance",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "3287550",
-		"_collection_link": "https://moo-team-6973.postman.co/workspace/agibank-interview~ef9d8c8e-3be9-412d-9050-fbb6e0055405/collection/3287550-09655bc9-08d9-4bf0-a9ff-1546b9b59c44?action=share&source=collection_link&creator=3287550"
-	},
-	"item": [
-		{
-			"name": "/insurance/customers/{customerId}/simulations",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://{{insurance_host}}/api/v1/insurance/customers/1/simulations?insuranceProductType=AGI_LIFE&insuranceCoverageType=BRONZE",
-					"protocol": "http",
-					"host": [
-						"{{insurance_host}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"insurance",
-						"customers",
-						"1",
-						"simulations"
-					],
-					"query": [
-						{
-							"key": "insuranceProductType",
-							"value": "AGI_LIFE"
-						},
-						{
-							"key": "insuranceCoverageType",
-							"value": "BRONZE"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/insurance/policies",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"customerId\": \"1\",\n    \"insuranceId\": \"1\", \n    \"insuranceOfferId\": \"550e8400-e29b-41d4-a716-446655440001\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://{{insurance_host}}/api/v1/insurance/policies",
-					"protocol": "http",
-					"host": [
-						"{{insurance_host}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"insurance",
-						"policies"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "09655bc9-08d9-4bf0-a9ff-1546b9b59c44",
+    "name": "insurance",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "3287550",
+    "_collection_link": "https://moo-team-6973.postman.co/workspace/agibank-interview~ef9d8c8e-3be9-412d-9050-fbb6e0055405/collection/3287550-09655bc9-08d9-4bf0-a9ff-1546b9b59c44?action=share&source=collection_link&creator=3287550"
+  },
+  "item": [
+    {
+      "name": "/insurance/customers/{customerId}/simulations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://{{insurance_host}}/api/v1/insurance/customers/1/simulations?insuranceProductType=AGI_LIFE&insuranceCoverageType=BRONZE",
+          "protocol": "http",
+          "host": [
+            "{{insurance_host}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "insurance",
+            "customers",
+            "1",
+            "simulations"
+          ],
+          "query": [
+            {
+              "key": "insuranceProductType",
+              "value": "AGI_LIFE"
+            },
+            {
+              "key": "insuranceCoverageType",
+              "value": "BRONZE"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/insurance/policies",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"customerId\": \"1\",\n    \"insuranceId\": \"1\", \n    \"insuranceOfferId\": \"550e8400-e29b-41d4-a716-446655440001\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://{{insurance_host}}/api/v1/insurance/policies",
+          "protocol": "http",
+          "host": [
+            "{{insurance_host}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "insurance",
+            "policies"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }
